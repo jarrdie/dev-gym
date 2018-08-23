@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial: Hello Dojo!</title>
+</head>
+
+<body>
+
+    <h1 id="greeting">Hello</h1>
+
+    <!-- The order matters: the configuration object must be created before
+        dojo.js is loaded -->
+    <script>
+        var dojoConfig = {
+            async: true,
+            // This code registers the correct location of the module package so 
+            // we can load Dojo from the CDN and being able to load local modules
+            packages: [{
+                name: "modules",
+                location: location.pathname.replace(/\/[^/]*$/, '') + '/modules'
+            }]
+        };
+    </script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+        data-dojo-config="async:true"></script>
+
+    <!-- The order matters: require can be called only once dojo.js is loaded -->
+    <script>
+        require(['modules/MyModule'], function (myModule) {
+            myModule.setText('greeting', 'Hello Dojo!');
+
+            setTimeout(function () {
+                myModule.restoreText('greeting');
+            }, 3000);
+        });
+        // External library: jQuery. Test: $('#greeting').length == 1
+        require(["//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"], function () { });
+    </script>
+
+</body>
+
+</html>

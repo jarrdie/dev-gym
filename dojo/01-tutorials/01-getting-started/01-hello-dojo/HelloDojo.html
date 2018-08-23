@@ -1,0 +1,40 @@
+<!-- To run this example:
+    npm install http-server -g
+    http-server -p 5555
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tutorial: Hello Dojo!</title>
+</head>
+
+<body>
+
+    <h1 id="greeting">Hello</h1>
+
+    <!-- Uses the Asynchronous Module Definition (AMD):
+        https://github.com/amdjs/amdjs-api/wiki/AMD  -->
+
+    <!-- When dojo.js is loaded only Dojo's AMD loader is available:
+        require() / define() -->
+
+    <!-- If runned from a server http/https can be removed. The CDN distribution
+        includes some of the most common modules itself (as dom or dom-construct).
+        For this reason no Ajax are performed for the required modules.   -->
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+        data-dojo-config="async:true"></script>
+
+    <!-- The order matters: require can be called only once dojo.js is loaded -->
+    <script>
+        require(['dojo/dom', 'dojo/dom-construct'], function (dom, builder) {
+            var node = dom.byId('greeting');
+            builder.place('<em> Dojo!</em>', node);
+        });
+    </script>
+
+</body>
+
+</html>
