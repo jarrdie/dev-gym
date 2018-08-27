@@ -19,9 +19,13 @@ Run the app in dev mode:
 
 ` dojo build --mode dev --watch --serve --port 9999 `
 
+  -> main.js = 632 KB, runtime.js = 14 KB
+
 Or in production mode:
 
 ` dojo build --mode dist --watch --serve --port 9999 `
+
+  -> main.js = 46 KB, runtime.js = 2 KB
 
 To test the app, first install intern:
 
